@@ -1,5 +1,6 @@
 <template>
-  <HomePage />
+ <HomePage />
+ <RouterView />
 </template>
 
 <script>
