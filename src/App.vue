@@ -1,9 +1,13 @@
 <template>
-  <div class="">
-  <RouterView />
-  </div>
+ <HomePage />
+ <RouterView />
 </template>
 
-<script setup>
-// import SignIn from "./pages/auth/SignIn.vue";
+<script>
+import HomePage from "./pages/HomePage.vue";
+
+export default {
+  name: "App",
+  components: { HomePage },
+};
 </script>
