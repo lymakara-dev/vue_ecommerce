@@ -1,9 +1,12 @@
 <template>
-  <div class="bg-red-500 text-5xl">HELLO</div>
+  <HomePage />
 </template>
 
 <script>
+import HomePage from "./pages/HomePage.vue";
+
 export default {
   name: "App",
+  components: { HomePage },
 };
 </script>
