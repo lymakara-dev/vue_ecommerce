@@ -1,7 +1,9 @@
-<script setup></script>
-
 <template>
-  <h1>Ready to start the project</h1>
+  <div class="bg-red-500 text-5xl">HELLO</div>
 </template>
 
-<style scoped></style>
+<script>
+export default {
+  name: "App",
+};
+</script>
