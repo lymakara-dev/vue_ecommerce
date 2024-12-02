@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-red-500 text-5xl">HELLO</div>
+  <div class="">
+  <RouterView />
+  </div>
 </template>
 
-<script>
-export default {
-  name: "App",
-};
+<script setup>
+// import SignIn from "./pages/auth/SignIn.vue";
 </script>
