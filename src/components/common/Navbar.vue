@@ -3,6 +3,7 @@
     <div class="m-auto w-full flex flex-row justify-between items-center">
       <div class="text-primary text-4xl font-bold">PhoneEdge</div>
       <div class="flex flex-row gap-3 items-center">
+        <InformationCircleIcon class="h-6 w-6" />
         <div>Need Help?</div>
         <div>
           <img
@@ -17,7 +18,15 @@
 </template>
 
 <script>
+import {
+  InformationCircleIcon,
+  ShoppingBagIcon,
+} from "@heroicons/vue/24/outline";
 export default {
   name: "Navbar",
+  components: {
+    ShoppingBagIcon,
+    InformationCircleIcon,
+  },
 };
 </script>
