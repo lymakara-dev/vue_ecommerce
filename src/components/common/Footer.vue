@@ -89,10 +89,7 @@
   </div>
 </template>
 
-<script>
-import "@fortawesome/fontawesome-free/css/all.css";
-import "@fortawesome/fontawesome-free/js/all.js";
-</script>
+<script></script>
 
 <style scoped>
 .footer {
