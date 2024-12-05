@@ -1,15 +1,14 @@
 <template>
-  <!-- <div class="bg-red-500 text-5xl">HELLO</div> -->
+  <RouterView />
+  
   <Footer/>
-
 </template>
 
 <script>
+import HomePage from "./pages/HomePage.vue";
 import Footer from './components/common/Footer.vue';
 export default {
   name: "App",
-  components:{
-    Footer,
-  },
+  components: { HomePage, Footer, },
 };
 </script>

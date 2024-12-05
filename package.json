@@ -10,11 +10,11 @@
     "test:unit": "vitest"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@heroicons/vue": "^2.2.0",
     "pinia": "^2.2.6",
     "vue": "^3.5.12",
     "vue_ecommerce": "file:",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
