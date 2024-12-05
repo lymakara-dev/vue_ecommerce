@@ -10,6 +10,7 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@vue-hero-icons/outline": "^1.7.2",
     "pinia": "^2.2.6",
     "vue": "^3.5.12",
     "vue_ecommerce": "file:",
