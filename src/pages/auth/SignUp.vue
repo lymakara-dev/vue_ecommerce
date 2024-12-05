@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="min-h-screen flex flex-col justify-center bg-center py-12 sm:px-6 lg:px-8 bg-[url('/img/phoneAccess.avif')]"
+   <div
+    class="h-screen w-screen bg-[url('/img/bg-signin.jpg')] bg-cover bg-center items-center min-h-screen bg-blue-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
     <div class=" sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
