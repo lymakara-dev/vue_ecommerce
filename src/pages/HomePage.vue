@@ -1,5 +1,6 @@
 <template>
   <Navbar></Navbar>
+  <HeroSection />
   <Footer></Footer>
 </template>
 
