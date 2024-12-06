@@ -1,70 +1,61 @@
 <template>
-   <div
-    class="h-screen w-screen bg-[url('/img/bg-signin.jpg')] bg-cover bg-center items-center min-h-screen bg-blue-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+  <div
+    class="h-screen w-screen bg-[url('../assets/images/bg-signin.jpg')] bg-cover bg-center items-center min-h-screen bg-blue-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
-    <div class=" sm:mx-auto sm:w-full sm:max-w-md">
-      <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md bg-white">
-          <h2
-            class=" mb-7 text-center text-3xl leading-9 font-extrabold text-gray-900"
+    <div
+      class="flex items-center justify-center mt-8 sm:mx-auto sm:w-full sm:max-w-md"
+    >
+      <div
+        class="rounded-lg border border-gray-200 bg-white lg:h-[700px] lg:w-[482px] shadow-md dark:border-gray-700 dark:bg-gray-900 flex-col flex h-full items-center justify-center sm:px-4 mt-8 sm:mx-auto sm:w-full sm:max-w-md"
+      >
+        <div
+          class="flex h-full w-full flex-col justify-center gap-4 p-6 mt-8 sm:mx-auto sm:w-full sm:max-w-md"
+        >
+          <div
+            class="left-0 right-0 inline-block border-gray-200 px-2 py-2.5 sm:px-4"
           >
-            Create a new account
-          </h2>
-        </div>
-        <form method="POST" action="#">
-          <div class="space-y-2">
-            <!-- Email Field -->
-            <InputField
-              label="Email:"
-              id="email"
-              type="email"
-              name="email"
-              placeholder="email@example.com"
-            />
-
-            <!-- Username Field -->
-            <InputField
-              label="Username:"
-              id="username"
-              type="text"
-              name="username"
-              placeholder="Enter your username"
-            />
-
-            <!-- Password Field -->
-            <InputField
-              label="Password:"
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-
-            <!-- Confirm Password Field -->
-            <InputField
-              label="Confirm Password:"
-              id="confirm-password"
-              type="password"
-              name="confirmPassword"
-              placeholder="Re-enter your password"
-            />
-          </div>
-
-          <div class="mt-6 flex-col">
-            <span class="block w-full rounded-md shadow-sm">
-              <button
-                type="submit"
-                class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+            <form class="flex flex-col gap-4 pb-4">
+              <h1 class="text-2xl self-center font-bold dark:text-white">
+                Welcome Back
+              </h1>
+              <span class="self-center mb-4"
+                >Login with your email & password</span
               >
-                Create account
-              </button>
-            </span>
-              <span class="self-center my-4 w-full flex justify-center"
+
+              <!-- Email Field -->
+              <InputField
+                label="Email:"
+                id="email"
+                type="email"
+                name="email"
+                placeholder="email@example.com"
+              />
+              <!-- Confirm Password Field -->
+              <InputField
+                label="Password:"
+                id="password"
+                type="password"
+                name="Password"
+                placeholder="input password"
+              />
+
+              <div class="flex flex-col mt-2">
+                <button
+                  type="submit"
+                  class="border transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed border-transparent bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white disabled:bg-gray-300 disabled:text-gray-700 rounded-lg"
+                >
+                  <span
+                    class="flex items-center justify-center gap-1 font-medium py-1 px-2.5 text-base false"
+                  >
+                    Login
+                  </span>
+                </button>
+                <span class="self-center my-4"
                   >Or you can logn in with Google or Facebook</span
                 >
                 <button
                   type="button"
-                  class="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg w-full flex justify-center"
+                  class="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg"
                 >
                   <span
                     class="flex items-center justify-center gap-x-3 font-medium py-1 px-2.5 text-base false"
@@ -104,7 +95,7 @@
                 </button>
                 <button
                   type="button"
-                  class="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg w-full flex justify-center my-4"
+                  class="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg my-4"
                 >
                   <span
                     class="flex items-center justify-center gap-x-3 font-medium py-1 px-2.5 text-base false"
@@ -124,18 +115,20 @@
                     >Sign in with Facebook</span
                   >
                 </button>
-          </div>
-        </form>
-        <div class="min-w-[270px]">
+              </div>
+            </form>
+            <div class="min-w-[270px]">
               <div class="mt-4 text-center dark:text-gray-200">
-                Already have an account?
+                Doesn't have account?
                 <a
                   class="text-blue-500 underline hover:text-blue-600"
-                  href="/signin"
-                  >Sign in here</a
+                  href="/signup"
+                  >Create account here</a
                 >
               </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

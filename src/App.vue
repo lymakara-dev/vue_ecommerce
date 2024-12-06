@@ -1,12 +1,18 @@
 <template>
-  <RouterView />
+ <HomePage />
+ <RouterView />
+ <CartItem/>
 </template>
 
 <script>
-import HomePage from "./pages/HomePage.vue";
-import Footer from './components/common/Footer.vue';
+
+import CartItem from './components/cart/CartItem.vue';
+import HomePage from './Views/HomePage.vue';
+
 export default {
   name: "App",
-  components: { HomePage, Footer, },
+  components: { 
+    CartItem,
+   },
 };
 </script>
