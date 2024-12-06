@@ -27,6 +27,7 @@ export default {
   components: {
     ShoppingBagIcon,
     InformationCircleIcon,
+    
   },
 };
 </script>
