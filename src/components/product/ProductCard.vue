@@ -2,7 +2,7 @@
   <div
     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow"
   >
-    <a href="#">
+    <a href="/productpage">
       <img
         class="p-8 rounded-t-lg"
         src="../../assets/images/headphone.png"
