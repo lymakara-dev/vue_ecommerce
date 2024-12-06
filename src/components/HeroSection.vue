@@ -4,7 +4,7 @@
   >
     <a href="#">
       <img
-        class="max-w-full max-h-full transition-all duration-300 blur-sm hover:blur-none object-cover"
+        class="max-w-full max-h-full object-cover"
         src="../assets/images/bg-signin.jpg"
         alt="image description"
       />
@@ -14,7 +14,7 @@
     >
       <div class="flex flex-col justify-center items-center gap-4 max-sm:gap-1">
         <span
-          class="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 text-3xl md:text-4xl lg:text-5xl"
+          class="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 p-1 text-3xl md:text-4xl lg:text-5xl"
         >
           Sell high-quality accessories for phones
         </span>
