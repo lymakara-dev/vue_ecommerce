@@ -13,6 +13,7 @@
           <button
             type="submit"
             class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+            @click="goToRoute"
           >
             Join
           </button>
@@ -33,6 +34,11 @@ export default {
     ShoppingBagIcon,
     InformationCircleIcon,
     
+  },
+  methods: {
+    goToRoute() {
+      this.$router.push("/signin");
+    },
   },
 };
 </script>
