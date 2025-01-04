@@ -18,9 +18,9 @@
         Shop Now
       </a>
     </div>
-    <div class="flex justify-center items-center w-[200px]">
+    <div class="flex justify-center items-center w-52">
       <a href="#">
-        <img class="rounded-t-lg" :src="image" alt="" />
+        <img class="rounded-lg" :src="image" :alt="alt" />
       </a>
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
     title: String,
     description: String,
     image: String,
+    alt: String,
   },
 };
 </script>

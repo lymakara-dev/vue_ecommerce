@@ -2,7 +2,16 @@
   <Navbar></Navbar>
   <div class="flex flex-col gap-8 mb-8">
     <HeroSection />
-    <Header class="mx-8"></Header>
+    <div class="flex gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <div v-for="promotion in promotionsData" :key="promotion.id">
+        <PromotionCard
+          :title="promotion.title"
+          :description="promotion.description"
+          :image="promotion.image"
+          :alt="promotion.title"
+        ></PromotionCard>
+      </div>
+    </div>
     <div class="flex flex-row mx-8 gap-8">
       <div class="grow"><GroupCategoryCard /></div>
       <div class=""><GroupProductCard /></div>
@@ -18,7 +27,9 @@ import Navbar from "@/components/common/Navbar.vue";
 import HeroSection from "@/components/HeroSection.vue";
 import GroupCategoryCard from "@/components/product/GroupCategoryCard.vue";
 import GroupProductCard from "@/components/product/GroupProductCard.vue";
+import PromotionCard from "@/components/product/PromotionCard.vue";
 import RouteStatus from "@/components/RouteStatus.vue";
+import promotionsData from "@/stores/promotions";
 
 export default {
   name: "HomePage",
@@ -30,6 +41,11 @@ export default {
     GroupCategoryCard,
     GroupProductCard,
     RouteStatus,
+    PromotionCard,
+  },
+
+  data() {
+    return { promotionsData };
   },
 };
 </script>
