@@ -1,182 +1,100 @@
 <template>
-    <div class="cart-page">
-      <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-      </table>
-      <tbody>
-        <tr v-for="(product,index) in cartItems" :key="index">
-          <td>
-            <img :src="product.img" :alt="product.name" class="Product-img"/>
-            <div>
-              <p>{{ product.name }}</p>
-              <p class="color">Color:{{ product.color }}</p>
-              <button class="remove-btn" @click="removeItem(index)">Remove</button>
+  <div class="cart-page w-[1024px] mx-auto bg-blue-100 rounded-lg shadow-md overflow-x-auto mt-24 ml-12">
+    <div class="w-full border-collapse">
+      <div class="grid grid-cols-4 gap-4 m-3">
+        <div class="text-blue-600 font-semibold">Product</div>
+        <div class="font-semibold">Quantity</div>
+        <div class="font-semibold">Price</div>
+        <div class="font-semibold">Subtotal</div>
+        
+      </div>
+      
+      <div class="flex-col justify-between gap-[50rem] w-full ">
+        <div v-for="(product, index) in cartItems" :key="index" class="border-b border-gray-200 w-full">
+          <div class="grid grid-cols-4 w-[1024px]">
+            <div class="p-2 flex items-center  ">
+              <img :src="product.img" :alt="product.name" class="Product-img w-20 h-20 rounded object-cover mr-4"/>
+              <div>
+                <p class="font-medium">{{ product.name }}</p>
+                <p class="text-gray-500">Color: {{ product.color }}</p>
+                <button class=" border-2 border-gray-400 p-1 rounded text-sm text-white cursor-pointer mt-2" @click="removeItem(index)">Remove</button>
+              </div>
             </div>
-          </td>
-          <td>
-            <div class="quantity-control">
-              <button class="decrement" @click="updateQuantity(index, -1)">-</button>
-              <input type="text" v-model="product.quantity" class="quantity">
-              <button class="increment" @click="updateQuantity(index, 1)">+</button>
+            <div class="p-2 flex items-center">
+              <div class="quantity-control flex items-center">
+                <button class="p-1 bg-white text-black rounded-l cursor-pointer" @click="updateQuantity(index, -1)">-</button>
+                <input type="text" v-model="product.quantity" class="w-12 text-center bg-white text-black p-1">
+                <button class="increment p-1 bg-white text-black rounded-r cursor-pointer" @click="updateQuantity(index, 1)">+</button>
+              </div>
             </div>
-          </td>
-          <td class="price">{{formatCurrency(product.price) }}</td>
-          <td class="quantity">{{formatCurrency(product.quantity * product.price)}}</td>
-        </tr>
-      </tbody>
-
+            <div class="p-2 flex items-center">{{ formatCurrency(product.price) }}</div>
+            <div class="p-2 flex items-center">{{ formatCurrency(product.quantity * product.price) }}</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'CartItem',
-    data() {
-      return{
-        cartItems:[
-          {
-            name:"Red Beats Headphone",
-            color:"color: red",
-            price: 19.00,
-            quantity:2,
-            img:"/img/Cart/redheadphone.png",
-          },
-          {
-            name:" Headphone",
-            color:"color: black",
-            price: 19.00,
-            quantity:2,
-            img:"/img/Cart/product2.png",
+  </div>
+</template>
 
-          },
-          {
-            name:" Headphone",
-            color:"color: black",
-            price: 19.00,
-            quantity:2,
-            img:"/img/Cart/product3.png",
-
-          },
-          {
-            name:" Headphone",
-            color:"color: black",
-            price: 19.00,
-            quantity:2,
-            img:"/img/Cart/product4.png",
-
-          },
-        ],
-
-      };
+<script>
+export default {
+  name: "CartItem",
+  data() {
+    return {
+      cartItems: [
+        {
+          name: "Red Beats Headphone",
+          color: "red",
+          price: 19.0,
+          quantity: 2,
+          img: "/img/Cart/redheadphone.png",
+        },
+        {
+          name: "Headphone",
+          color: "black",
+          price: 19.0,
+          quantity: 2,
+          img: "/img/Cart/product2.png",
+        },
+        {
+          name: "Headphone",
+          color: "black",
+          price: 19.0,
+          quantity: 2,
+          img: "/img/Cart/product3.png",
+        },
+        {
+          name: "Headphone",
+          color: "black",
+          price: 19.0,
+          quantity: 2,
+          img: "/img/Cart/product4.png",
+        },
+      ],
+    };
+  },
+  computed: {
+    totalPrice() {
+      return this.cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     },
-    methods:{
-      updateQuantity(index,change){
-        const item =this.cartItems[index];
-        const newQuantity =item.quantity + change;
-        if(newQuantity >= 1){
-          item.quantity =newQuantity;
-        }
-      },
-      removeItem(index){
-        this.cartItems.splice(index,1);
-      },
-      formatCurrency(value){
-        return '19.0$';
-      },
+  },
+  methods: {
+    updateQuantity(index, change) {
+      const item = this.cartItems[index];
+      const newQuantity = item.quantity + change;
+      if (newQuantity >= 1) {
+        item.quantity = newQuantity;
+      }
     },
-  };
-  </script>
-  
-  <style scoped>
-  body{
-    font-family: Arial,sans-serif;
-    background-color:#ffffff;
-    margin: 0;
-    padding: 5px;
-  }
-  .cart-page{
-    width: 40%;
-    /* height: 50%; */
-    margin: 0 auto;
-    background: #F0F4FF;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-    margin-top: 100px;
-    margin-left: 50px;
-
-  }
-  table{
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th,td{
-    padding: 10px;
-    /* text-align: left; */
-  }
-  th{
-    background: #f3fbfd;
-    border-bottom: solid 1px rgb(169, 164, 164);
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #555;
-  }
-  img{
-    width: 40%;
-    height: 10%;
-    border-radius: 5px;
-    object-fit: cover;
-  }
-  .Product-img{
-    position: relative;
-  }
-  .quantity-control{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-right: 300px;
-  }
-  .quantity-control button{
-    padding: 5px 10px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    position:relative;
-   
-    
-  }
-  .quantity-control input{
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 2px;
-  }
-  .remove-btn{
-    background: rgb(61, 143, 150);
-    border: 2px solid gray;
-    border-radius: 5px;
-    color:white;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .price {
-    position: relative;
-    right: 200px;
-  }
-  /* .quantity{
-    position: relative;
-    right: 100px;
-  } */
-
-  </style>
-  
+    removeItem(index) {
+      this.cartItems.splice(index, 1);
+    },
+    formatCurrency(value) {
+      return `$${value.toFixed(2)}`;
+    },
+  },
+};
+</script>
