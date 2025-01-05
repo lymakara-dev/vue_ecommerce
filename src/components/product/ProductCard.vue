@@ -1,92 +1,47 @@
 <template>
   <div
-    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+    class="w-full h-[450px] max-w-[18rem] bg-white border border-gray-200 rounded-lg shadow flex flex-col"
   >
-    <a href="/productpage">
-      <img
-        class="p-8 rounded-t-lg"
-        src="../../assets/images/headphone.png"
-        alt="product image"
-      />
-    </a>
-    <div class="px-5 pb-5">
+    <div class="flex justify-center items-center h-[210px] relative">
+      <div @click="goToDetailPage">
+        <img
+          class="rounded-lg object-cover h-52 w-52"
+          :src="image"
+          :alt="alt"
+        />
+      </div>
+
+      <div
+        v-if="hasDiscount"
+        class="absolute top-5 right-5 bg-orange-500 p-2 rounded-lg text-white text-sm font-bold"
+      >
+        {{ discountPercentage }}%
+      </div>
+    </div>
+    <div class="grow px-5 pb-5">
       <a href="#">
+        <h1>{{ productId }}</h1>
         <h5 class="text-xl font-semibold tracking-tight text-gray-900">
-          Headphone
+          {{ name }}
         </h5>
       </a>
-      <p>Description</p>
-      <div class="flex items-center mt-2.5 mb-5">
-        <div class="flex items-center space-x-1 rtl:space-x-reverse">
-          <svg
-            class="w-4 h-4 text-yellow-300"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 22 20"
-          >
-            <path
-              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-            />
-          </svg>
-          <svg
-            class="w-4 h-4 text-yellow-300"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 22 20"
-          >
-            <path
-              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-            />
-          </svg>
-          <svg
-            class="w-4 h-4 text-yellow-300"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 22 20"
-          >
-            <path
-              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-            />
-          </svg>
-          <svg
-            class="w-4 h-4 text-yellow-300"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 22 20"
-          >
-            <path
-              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-            />
-          </svg>
-          <svg
-            class="w-4 h-4 text-gray-200 dark:text-gray-600"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 22 20"
-          >
-            <path
-              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-            />
-          </svg>
-        </div>
+      <p>{{ description }}</p>
+      <RatingStar :rating-point="ratingPoint"></RatingStar>
+    </div>
+    <div class="px-5 pb-5">
+      <div class="flex flex-row items-center justify-between">
         <span
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3"
-          >5.0</span
+          v-if="hasDiscount"
+          class="text-xl font-bold text-red-500 line-through"
         >
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex flex-col">
-          <p class="text-md">$200</p>
-          <span class="text-3xl font-bold text-gray-900">$599</span>
-        </div>
+          {{ price }}$
+        </span>
+        <span class="text-xl font-bold text-gray-900">
+          {{ hasDiscount ? discountedPrice : price }}$
+        </span>
         <a
           href="#"
-          class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center"
           >Add to cart</a
         >
       </div>
@@ -95,7 +50,41 @@
 </template>
 
 <script>
+import RatingStar from "../RatingStar.vue";
+
 export default {
   name: "ProductCard",
+  components: {
+    RatingStar,
+  },
+  props: {
+    image: String,
+    alt: String,
+    name: String,
+    description: String,
+    ratingPoint: String,
+    discountPercentage: Number,
+    price: Number,
+    productId: Number,
+  },
+
+  computed: {
+    hasDiscount() {
+      return this.discountPercentage > 0;
+    },
+    discountedPrice() {
+      if (!this.hasDiscount) return this.price;
+      return (
+        this.price -
+        (this.price * this.discountPercentage) / 100
+      ).toFixed(2);
+    },
+  },
+
+  methods: {
+    goToDetailPage() {
+      this.$router.push(`/product/${this.productId}`);
+    },
+  },
 };
 </script>
