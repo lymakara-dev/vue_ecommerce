@@ -8,9 +8,16 @@
       <div >
         <RouteStatus/>
         <div style="display: flex; margin-bottom: 30px;">
-            <DisplayProduct/>
-            <br><br>
-            <Description/>
+            <DisplayProduct
+              :mainImage="mainImage"
+              :images="images"
+              @update-main-image="updateMainImage"
+            />
+            <Description 
+              Title="Wireless headphone" 
+              Description="Wireless headphones with crystal-clear sound, long battery life, and a sleek, comfy design—perfect for music and calls."
+              :tags="['Wireless','Foldable','Light','Bluetooth']"
+            />
         </div>
         <CommentSection/>
       </div>
@@ -30,7 +37,6 @@
  import DisplayProduct from "@/components/productDetail/DisplayProduct.vue";
  import RouteStatus from "@/components/RouteStatus.vue";
  import GroupCategoryCard from "@/components/product/GroupCategoryCard.vue";
-
  export default{
     components:{
         Footer,
@@ -42,7 +48,30 @@
         DisplayProduct,
         RouteStatus,
         GroupCategoryCard,
-    }
+    },
+
+    data(){
+      return{
+        mainImage:'/src/assets/images/headphoneWhite.png',
+        images:[
+          '/src/assets/images/headphonePink.png', 
+          '/src/assets/images/headphoneBlue.png',
+          '/src/assets/images/headphoneBlack.png',
+          '/src/assets/images/headphoneRed.png',
+          '/src/assets/images/headphoneYellow.png'
+        ]
+      }
+    },
+
+    methods: {
+      updateMainImage(image) {
+            const index = this.images.indexOf(image); // find index of the clicked image in the array, if the image is not found it returns -1 
+            if (index !== -1) {  //if the image exists in the array
+                this.images[index] = this.mainImage;
+                this.mainImage = image;
+            }
+        },
+    },
  };
  </script>
  
