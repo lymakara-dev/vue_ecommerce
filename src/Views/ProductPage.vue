@@ -1,12 +1,9 @@
 <template>
-  <Navbar></Navbar>
   <div class="flex flex-col gap-8 mb-8">
     <HeroSection />
     <Header class="mx-8"></Header>
-    <div class="flex flex-row mx-8 gap-8">
-      <div style="width: 1200px"><GroupCategoryCard /></div>
+    <div class="flex flex-row mx-8 gap-8 items-center w-1/2 bg-red-500">
       <div>
-        <RouteStatus />
         <div style="display: flex; margin-bottom: 30px">
           <DisplayProduct
             :mainImage="mainImage"
@@ -21,7 +18,6 @@
         </div>
         <CommentSection />
       </div>
-      <CommentSection />
     </div>
   </div>
 </template>
@@ -64,7 +60,7 @@ export default {
 
   methods: {
     updateMainImage(image) {
-      const index = this.images.indexOf(image); // find index of the clicked image in the array, if the image is not found it returns -1
+      const index = this.images.indexOf(image);
       if (index !== -1) {
         //if the image exists in the array
         this.images[index] = this.mainImage;

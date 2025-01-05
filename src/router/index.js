@@ -13,13 +13,6 @@ const router = createRouter({
       path: "/",
       name: "Home",
       component: HomePage,
-      children: [
-        {
-          path: "/product/:productId",
-          name: "ProductPage",
-          component: ProductPage,
-        },
-      ],
     },
     { path: "/about", name: "About", component: About },
     { path: "/contact", name: "Contact", component: Contact },
@@ -34,7 +27,7 @@ const router = createRouter({
       component: SignUp,
     },
     {
-      path: "/productpage",
+      path: "/product/:id",
       name: "ProductPage",
       component: ProductPage,
     },

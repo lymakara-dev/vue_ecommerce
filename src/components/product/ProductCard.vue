@@ -20,7 +20,6 @@
     </div>
     <div class="grow px-5 pb-5">
       <a href="#">
-        <h1>{{ productId }}</h1>
         <h5 class="text-xl font-semibold tracking-tight text-gray-900">
           {{ name }}
         </h5>
@@ -62,7 +61,7 @@ export default {
     alt: String,
     name: String,
     description: String,
-    ratingPoint: String,
+    ratingPoint: Number,
     discountPercentage: Number,
     price: Number,
     productId: Number,

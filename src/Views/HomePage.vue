@@ -68,7 +68,6 @@ import promotionsData from "@/stores/promotions";
 import productsData from "@/stores/products";
 import categoriesData from "@/stores/categories";
 import ProductCard from "@/components/product/ProductCard.vue";
-import ProductDetailPage from "./ProductDetailPage.vue";
 
 export default {
   name: "HomePage",
@@ -78,7 +77,6 @@ export default {
     PromotionCard,
     CategoryCard,
     ProductCard,
-    ProductDetailPage,
   },
 
   data() {

@@ -31,7 +31,7 @@ export default {
   name: "RatingStar",
   props: {
     ratingPoint: {
-      type: [String, Number], // Accepts either a String or Number
+      type: Number,
       required: true,
     },
   },
