@@ -1,18 +1,23 @@
 <template>
  <HomePage />
  <RouterView />
- <CartItem/>
+ <div class="flex">
+  <CartItem/>
+ </div>
 </template>
 
 <script>
 
-import CartItem from './components/cart/CartItem.vue';
-import HomePage from './Views/HomePage.vue';
+import { RouterView } from 'vue-router';
 
 export default {
   name: "App",
   components: { 
-    CartItem,
+    // CartItem,
+    // HomePage,
+    // RouterView,
+    // CartSummery,
+
    },
 };
 </script>
