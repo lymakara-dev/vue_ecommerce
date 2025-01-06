@@ -25,12 +25,12 @@ const router = createRouter({
       component: SignUp,
     },
     {
-      path: "/Cart",
+      path: "/cart",
       name: "cart",
       component: Cart,
     },
     {
-      path: "/Contact",
+      path: "/contact",
       name: "contactinform",
       component: ContactINFO,
     },
