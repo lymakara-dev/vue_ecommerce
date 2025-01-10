@@ -156,9 +156,9 @@
         },
 
         items: [
-          { id: 1, name: 'Headphones', color: 'Black', price: 38, quantity: 1, image: 'https://via.placeholder.com/150' },
-          { id: 2, name: 'Tray Table', color: 'Red', price: 38, quantity: 1, image: 'https://via.placeholder.com/150' },
-          { id: 3, name: 'Table Lamp', color: 'Gold', price: 39, quantity: 1, image: 'https://via.placeholder.com/150' },
+          { id: 1, name: 'Headphones', color: 'Black', price: 38, quantity: 1, image: '/img/Cart/product2.png' },
+          { id: 2, name: 'Tray Table', color: 'Red', price: 38, quantity: 1, image: '/img/Cart/product3.png' },
+          { id: 3, name: 'Table Lamp', color: 'Gold', price: 39, quantity: 1, image: '/img/Cart/product4.png' },
         ],
         discountCode: '',
         discountAmount: 25,
