@@ -9,11 +9,11 @@
         <div class="text-sm md:text-base lg:text-lg xl:text-xl max-sm:hidden">
           Need Help?
         </div>
-        <div class="basket" @click="goToCart">
-          <span>🛒</span>
+        <div class="basket relative" @click="goToCart">
+          <span class="text-3xl transform scaleX(-1)">🛒</span>
           <span
             v-if="cart.itemCount > 0"
-            class="cart-count bg-red-500 p-4 text-white"
+            class="cart-count absolute top-0 left-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
             >{{ cart.itemCount }}</span
           >
         </div>
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     goToRoute() {
-      this.$router.push("/signin");
+      this.$router.push("/auth/signin");
     },
     goToCart() {
       this.router.push({ name: "Cart" });

@@ -131,7 +131,7 @@
             Already have an account?
             <a
               class="text-blue-500 underline hover:text-blue-600"
-              href="/signin"
+              href="/auth/signin"
               >Sign in here</a
             >
           </div>

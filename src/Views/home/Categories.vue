@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row mx-8 gap-8">
+  <div class="flex flex-row gap-8">
     <div class="grow flex flex-col gap-2">
       <div
         class="cursor-pointer border border-gray-300 p-4 rounded-md text-center shadow-md hover:bg-gray-100"
