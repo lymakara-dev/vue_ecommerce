@@ -45,7 +45,6 @@ export default {
     },
   },
   data() {
-    console.log(this.selecteCategory);
     return { categories };
   },
 };
