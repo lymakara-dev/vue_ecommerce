@@ -5,12 +5,15 @@
                 <i class="fa-solid fa-user" style="border:1px solid black; border-radius: 25px; overflow: hidden; width: 30px; height: 30px; margin-right: 10px;"></i>
                 <!-- <img src="" alt="Profile Picture"  width="50px" height="50px" style=""> -->
                 <div>
-                    <p style="font-size: 16px; color:blue; ">Anonymous</p>
-                    <p style="font-size: 10px; color:#64748B; ">12:01am - 17/11/2024</p>
+                    <!-- <p style="font-size: 16px; color:blue; ">Anonymous</p>
+                    <p style="font-size: 10px; color:#64748B; ">12:01am - 17/11/2024</p> -->
+                    <p style="font-size: 16px; color:blue; ">{{Username}}</p>
+                    <p style="font-size: 10px; color:#64748B; ">{{Date}}</p>
                 </div>
             </div>
             <div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aliquid blanditiis libero illo doloribus, dolore totam nam, quod nemo temporibus tenetur? Reprehenderit officiis non ratione saepe ducimus dolorem quia recusandae.</p>  
+                <p>{{ comment }}</p>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aliquid blanditiis libero illo doloribus, dolore totam nam, quod nemo temporibus tenetur? Reprehenderit officiis non ratione saepe ducimus dolorem quia recusandae.</p>   -->
             </div>
         </div>
         <div>
@@ -22,6 +25,12 @@
 <script>
 
     export default {
+        
+        props:{
+            Username: String,
+            Date: String,
+            comment: String,
+        },
 
         methods: {
             autoResize(event) {

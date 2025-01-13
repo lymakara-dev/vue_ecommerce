@@ -13,7 +13,32 @@ const router = createRouter({
       path: "/",
       name: "Home",
       component: HomePage,
+      // children:[
+      //   {
+      //     path: "/product/:productId",
+      //     name: "ProductPage",
+      //     component: ProductPage,
+      //   }
+      // ]
     },
+    
+    {
+      path: "/product/:productId",
+      name: "ProductPage",
+      component: ProductPage,
+    },
+    // {
+    //   path: '/page/:nb',
+    //   component: Page,
+    //   name: 'page',
+    //   children:[
+    //     {
+    //       path: 'section/:id',
+    //       component: Section,
+    //       name: 'section',
+    //     }
+    //   ]
+    // },
     {
       path: "/signin",
       name: "SignIn",
@@ -35,11 +60,7 @@ const router = createRouter({
       component: ContactINFO,
     },
 
-    {
-      path: "/productpage",
-      name: "ProductPage",
-      component: ProductPage,
-    },
+
   ],
 });
 

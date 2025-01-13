@@ -21,7 +21,8 @@
         props:{
             Title: String,
             Description: String,
-            tags: Array
+            tags: Array,
+            productId: Number,
         }
     }
 </script>

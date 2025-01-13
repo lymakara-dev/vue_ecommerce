@@ -58,31 +58,31 @@
     </div>
 
     <div class="contact">
-      <div class="wrapper">
-        <h4 style="align-self: center; font-size: 17px">FOLLOW US</h4>
+      <div class="wrapper 1">
+        <h4 style="align-items: center; font-size: 17px;">FOLLOW US</h4>
         <div class="new">
           <i class="fa-brands fa-facebook"></i>
-          <p>Facebook</p>
+          <a href="https://www.facebook.com">Facebook</a>
           <i class="fa-brands fa-tiktok"></i>
-          <p>TikTok</p>
+          <a href="https://www.tiktok.com">TikTok</a>
           <i class="fa-brands fa-youtube"></i>
-          <p>YouTube</p>
+          <a href="https://www.tiktok.com">YouTube</a>
           <i class="fa-brands fa-threads"></i>
-          <p>Threads</p>
+          <a href="https://www.tiktok.com">Threads</a>
         </div>
       </div>
 
       <div class="wrapper" style="margin-right: 100px">
-        <h4 style="align-self: center; font-size: 17px">CONTACT US</h4>
-        <div class="new">
+        <h4 style="align-items: center; font-size: 17px;">CONTACT US</h4>
+        <div class="new one">
           <i class="fa-regular fa-envelope"></i>
-          <p>info@PhoneEdge.com</p>
+          <a href="mailto:kongsopheakvortey@gmail.com">info@PhoneEdge.com</a>
           <i class="fa-solid fa-phone"></i>
           <p>(+855) 018 116 666</p>
           <i class="fa-solid fa-phone"></i>
           <p>(+855) 061 116 666</p>
           <i class="fa-brands fa-telegram"></i>
-          <p>Telegram</p>
+          <a href="https://t.me/c/2252504820/1" target="_blank" rel="noopener noreferrer">Telegram</a>
         </div>
       </div>
     </div>
@@ -98,10 +98,8 @@ export default {
 <style scoped>
 .footer {
   background-color: black;
-  height: 244px;
   font-family: serif;
   color: aliceblue;
-
   display: flex;
   padding: 30px;
 }
@@ -115,6 +113,7 @@ export default {
 .contact {
   font-size: 12px;
   display: flex;
+  gap: 100px;
 }
 .payingMethod {
   display: flex;
@@ -130,10 +129,47 @@ export default {
 }
 .new {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;
   align-items: center;
   font-size: 15px;
-  column-gap: 30px;
+  column-gap: 20px;
   height: 200px;
 }
+
+@media only screen and (max-width: 1140px) {
+  .wrapper{
+    flex-direction: row;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  .footer, .contact{
+    flex-direction: column;
+    width: auto;
+    gap: 0;
+  }
+  .new{
+    grid-auto-flow: column ;
+    grid-template-columns: auto;
+    padding-left: 60px;
+    height: 50px;
+  }
+
+  .new.one{
+    grid-auto-flow: column ;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+    padding-left: 60px;
+    height: 50px;
+  }
+} 
+
+@media only screen and (max-width: 870) {
+  .new.one{
+    grid-auto-rows: 2fr;
+    grid-template-columns: repeat(4, 1fr); 
+    padding-left: 60px;
+    height: 50px;
+    background-color: pink;
+  }
+} 
 </style>

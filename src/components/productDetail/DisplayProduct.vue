@@ -26,6 +26,7 @@
     props: {
       mainImage: String,
       images: Array,
+      productId: Number,
     },
 
     methods:{
