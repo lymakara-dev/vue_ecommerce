@@ -2,6 +2,7 @@
   <div class="flex flex-col gap-8 mb-8">
     <HeroSection />
 
+    <!-- promotion offer -->
     <div class="flex gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
       <div v-for="promotion in promotionsData" :key="promotion.id">
         <PromotionCard
@@ -14,6 +15,7 @@
     </div>
 
     <div class="flex flex-row mx-8 gap-8">
+      <!-- side bar -->
       <div class="grow flex flex-col gap-2">
         <div
           class="cursor-pointer border border-gray-300 p-4 rounded-md text-center shadow-md hover:bg-gray-100"
@@ -40,6 +42,8 @@
       <router-view></router-view>
       <div>
         <RouteStatus></RouteStatus>
+
+        <!-- display product  -->
         <div class="grid grid-cols-4 gap-4">
           <div v-for="product in filteredProducts" :key="product.id">
             <ProductCard
