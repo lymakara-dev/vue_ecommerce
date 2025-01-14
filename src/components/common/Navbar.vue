@@ -44,6 +44,7 @@ export default {
   components: {
     ShoppingBagIcon,
     InformationCircleIcon,
+    
   },
   setup() {
     const router = useRouter();

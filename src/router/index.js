@@ -41,6 +41,9 @@ const routes = [
         path: "/cart",
         name: "Cart",
         component: Cart,
+        meta: {
+          requireAuth: true,
+        },
       },
       {
         path: "/cartv2",
@@ -51,6 +54,30 @@ const routes = [
         path: "/promotion-products",
         name: "PromotionProducts",
         component: PromotionProducts,
+      },
+      {
+        path: "/shoppingCart",
+        name: "ShoppingCart",
+        component: () => import("@/components/cart/shoppingCart.vue"),
+        meta: {
+          requireAuth: true,
+        },
+      },
+      {
+        path: "/checkoutShopping",
+        name: "CheckoutShopping",
+        component: () => import("@/components/cart/checkoutShopping.vue"),
+        meta: {
+          requireAuth: true,
+        },
+      },
+      {
+        path: "/CompleteOrder",
+        name: "CompleteOrder",
+        component: () => import("@/components/cart/CompleteOrder.vue"),
+        meta: {
+          requireAuth: true,
+        },
       },
     ],
   },
