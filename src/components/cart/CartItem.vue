@@ -20,12 +20,12 @@
               <p class="color">Color:{{ product.color }}</p>
               <button class="remove-btn" @click="removeItem(index)">Remove</button>
             </div>
-          </td>
-          <td>
-            <div class="quantity-control">
-              <button class="decrement" @click="updateQuantity(index, -1)">-</button>
-              <input type="text" v-model="product.quantity" class="quantity">
-              <button class="increment" @click="updateQuantity(index, 1)">+</button>
+            <div class="p-2 flex items-center">
+              <div class="quantity-control flex items-center">
+                <button class="p-1 bg-white text-black rounded-l cursor-pointer" @click="updateQuantity(index, -1)">-</button>
+                <input type="text" v-model="product.quantity" class="w-12 text-center bg-white text-black p-1">
+                <button class="increment p-1 bg-white text-black rounded-r cursor-pointer" @click="updateQuantity(index, 1)">+</button>
+              </div>
             </div>
           </td>
           <td class="price">{{formatCurrency(product.price) }}</td>

@@ -5,6 +5,7 @@ import Cart from "@/Views/home/Cart.vue";
 import Cartv2 from "@/Views/home/Cartv2.vue";
 import PromotionProducts from "@/Views/home/PromotionProducts.vue";
 
+
 const routes = [
   { path: "/", redirect: "/products" },
   {
@@ -48,6 +49,17 @@ const routes = [
         name: "PromotionProducts",
         component: PromotionProducts,
       },
+      {
+        path: "/shoppingCart",
+        name: "ShoppingCart",
+        component: () => import("@/components/cart/shoppingCart.vue"),
+      },
+      {
+        path: "/checkoutShopping",
+        name: "CheckoutShopping",
+        component: () => import("@/components/cart/checkoutShopping.vue"),
+      },
+
     ],
   },
   {
