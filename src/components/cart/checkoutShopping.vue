@@ -65,7 +65,7 @@
                   <option value="" disabled selected>Select Your Country</option>
                   <option value="AUS">Australia</option>
                   <option value="CAN">Canada</option>
-                  <option value="USA">Cambodia</option>
+                  <option value="KHM">Cambodia</option>
                   <option value="USA">United States</option>
                   <option value="UK">United Kingdom</option>
                   <!-- Add more countries as needed -->
@@ -123,6 +123,7 @@
 
 <script>
 import { CheckIcon, ShoppingCartIcon, CheckCircleIcon } from "@heroicons/vue/24/outline";
+import cart from "@/stores/cart";
 
 export default {
   name: "CheckoutShopping",
@@ -133,10 +134,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      // Logic to handle form submission and display the checkout page
-      console.log("Form submitted");
-      // Redirect to the checkout page or display a success message
-      this.$router.push({ name: 'CheckoutPage' });
+      // Complete the current order
+      cart.completeOrder();
+      
+      // Redirect to the CompleteOrder page
+      this.$router.push({ name: 'CompleteOrder' });
     },
   },
 };
