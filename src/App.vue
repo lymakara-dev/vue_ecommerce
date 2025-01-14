@@ -1,18 +1,18 @@
 <template>
- <RouterView />
- <div class="flex">
- </div>
+  <Navbar></Navbar>
+  <RouterView />
+  <Footer></Footer>
 </template>
 
 <script>
-import { RouterView } from 'vue-router';
+import Footer from "./components/common/Footer.vue";
+import Navbar from "./components/common/Navbar.vue";
 
 export default {
   name: "App",
-  components: { 
-    RouterView,
-    
-
-   },
+  components: {
+    Navbar,
+    Footer,
+  },
 };
 </script>

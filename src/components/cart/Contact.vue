@@ -1,5 +1,6 @@
 <template>
-    <div class="max-w-4xl mx-auto p-6 bg-blue-100 rounded-lg shadow-md">
+    <div class="flex ">
+      <div class="m-10 w-[80rem] p-6 bg-gray-50 rounded-lg shadow-md">
       <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
@@ -29,7 +30,12 @@
         <div>
           <label class="block text-sm font-medium text-gray-700">Country</label>
           <select v-model="form.country" class="mt-1 p-2 border border-gray-300 rounded-md w-full">
-            <option value="">Country</option>
+            <option value="Cambodia">Cambodia</option>
+            <option value="Chainese">Chainese</option>
+            <option value="Thai">Thai</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Korea">Korea</option>
+            <option value="Japan">Japan</option>
             <option value="USA">USA</option>
             <option value="Canada">Canada</option>
             <option value="UK">UK</option>
@@ -76,7 +82,7 @@
       <button @click="placeOrder" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Place Order</button>
     </div>
 
-  <div class="max-w-lg mx-3 md:mt-30 p-10 bg-white rounded-lg shadow-md ">
+  <div class="max-w-lg mx-3 h-[50rem] mt-9 md:mt-30 p-10 bg-gray-50 rounded-lg shadow-md ">
     <h2 class="text-2xl font-bold mb-6 text-center">Order Summary</h2>
       
       <div v-for="item in items" :key="item.id" class="flex justify-between items-center border-b pb-4 mb-4">
@@ -86,9 +92,9 @@
             <p class="text-lg font-semibold">{{ item.name }}</p>
             <p class="text-gray-600">Color: {{ item.color }}</p>
             <div class="flex items-center mt-1">
-              <button @click="decrement(item.id)" class="bg-gray-200 rounded px-2 py-1">-</button>
+              <button @click="decrement(item.id)" class="bg-gray-200 rounded px-2 py-1  hover:bg-red-500">-</button>
               <span class="mx-2">{{ item.quantity }}</span>
-              <button @click="increment(item.id)" class="bg-gray-200 rounded px-2 py-1">+</button>
+              <button @click="increment(item.id)" class="bg-gray-200 rounded px-2 py-1  hover:bg-green-500">+</button>
             </div>
           </div>
         </div>
@@ -123,15 +129,7 @@
         <p class="font-semibold">Total:</p>
         <p class="text-xl font-bold">${{ total }}</p>
       </div>
-  
-      <div class="mt-6">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Upload a Picture</label>
-        <input 
-          type="file" 
-          @change="handleFileUpload" 
-          class="border rounded-md p-2 w-full" 
-        />
-      </div>
+    </div>
     </div>
   </template>
   
@@ -156,9 +154,9 @@
         },
 
         items: [
-          { id: 1, name: 'Headphones', color: 'Black', price: 38, quantity: 1, image: '/img/Cart/product2.png' },
-          { id: 2, name: 'Tray Table', color: 'Red', price: 38, quantity: 1, image: '/img/Cart/product3.png' },
-          { id: 3, name: 'Table Lamp', color: 'Gold', price: 39, quantity: 1, image: '/img/Cart/product4.png' },
+          { id: 1, name: 'Headphones', color: 'Black', price: 19, quantity: 1, image: '/img/Cart/product2.png' },
+          { id: 2, name: 'Tray Table', color: 'Red', price: 19, quantity: 1, image: '/img/Cart/product3.png' },
+          { id: 3, name: 'Table Lamp', color: 'Gold', price: 19, quantity: 1, image: '/img/Cart/product4.png' },
         ],
         discountCode: '',
         discountAmount: 25,
@@ -176,8 +174,8 @@
     methods: {
       placeOrder() {
         console.log(this.form);
-        // Add your order processing logic here
-        alert('Order placed successfully!');
+        // alert('Order placed successfully!');
+        this.$router.push('/Success');
       },
 
       increment(id) {
@@ -191,16 +189,8 @@
       applyDiscount() {
         alert(`Discount code ${this.discountCode} applied!`);
       },
-      handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (file) {
-          console.log('Uploaded file:', file);
-        }
-      },
     },
   };
   </script>
   
-  <style scoped>
-  /* You can add any additional styles here */
-  </style>
+  <style scoped></style>
