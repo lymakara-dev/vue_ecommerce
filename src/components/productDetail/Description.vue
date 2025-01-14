@@ -7,10 +7,6 @@
 
         <div class="GroupBtn">
             <p><strong>$ {{ price }}</strong></p>
-            <button class="btn"> 
-                <i class="fa-solid fa-cart-shopping" style="padding-right: 5px;"></i>
-                <p>cart</p>
-            </button>
         </div>
 
         <br><hr><br>
@@ -18,7 +14,6 @@
             <button v-for="(tag, index) in tags" :key="index" class="tag">{{ tag }}</button>
         </div>
     </div>
-
 </template>
 <script>
     export default {

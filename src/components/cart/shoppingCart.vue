@@ -11,17 +11,14 @@
             <div>
               <h3 class="text-base font-bold text-gray-800 mb-1">{{ item.name }}</h3>
               <div class="space-y-1">
-                <h6 class="text-sm text-gray-800">Size: <strong class="ml-2">{{ item.size }}</strong></h6>
-                <h6 class="text-sm text-gray-800">Color: <strong class="ml-2">{{ item.color }}</strong></h6>
                 <h6 class="text-sm text-gray-800">Price: <strong class="ml-2">{{ formatCurrency(item.price) }}</strong></h6>
+                <h6 class="text-sm text-gray-800">Quantity: <strong class="ml-2">{{ item.quantity }}</strong></h6>
               </div>
-
               <div class="mt-6 flex flex-wrap gap-4">
                 <RemoveButton @remove="removeItem(index)" />
                 <MoveToWishlistButton />
               </div>
             </div>
-
             <QuantityPrice
               :quantity="item.quantity"
               :product="item"
@@ -38,20 +35,34 @@
           <li class="flex flex-wrap gap-4 text-sm py-3">Subtotal <span class="ml-auto font-bold">{{ formatCurrency(subtotal) }}</span></li>
           <li class="flex flex-wrap gap-4 text-sm py-3">Shipping <span class="ml-auto font-bold">{{ formatCurrency(shipping) }}</span></li>
           <li class="flex flex-wrap gap-4 text-sm py-3">Tax <span class="ml-auto font-bold">{{ formatCurrency(tax) }}</span></li>
+          <li class="flex flex-wrap gap-4 text-sm py-3">Discount <span class="ml-auto font-bold">-{{ formatCurrency(discountAmount) }}</span></li>
           <li class="flex flex-wrap gap-4 text-sm py-3 font-bold">Total <span class="ml-auto">{{ formatCurrency(total) }}</span></li>
         </ul>
-        <div class="w-full tracking-wide">
-          <!-- <h3 class="text-lg font-bold text-gray-800 mb-4">Apply promo code</h3> -->
 
+        <div class="w-full tracking-wide">
           <div class="flex border border-blue-600 overflow-hidden">
-            <input type="email" placeholder="Promo code"
-              class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-2.5" />
-            <button type='button' class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 px-5 text-sm text-white">
+            <input
+              v-model="voucher"
+              type="text"
+              placeholder="Promo code"
+              class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-2.5"
+            />
+            <button
+              @click="applyVoucher"
+              type="button"
+              class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 px-5 text-sm text-white"
+            >
               Apply
             </button>
           </div>
         </div>
-        <button @click="goToCheckout" type="button" class="mt-4 text-sm px-4 py-2.5 w-full bg-blue-600 hover:bg-blue-700 text-white tracking-wide">Make Payment</button>
+        <button
+          @click="goToCheckout"
+          type="button"
+          class="mt-4 text-sm px-4 py-2.5 w-full bg-blue-600 hover:bg-blue-700 text-white tracking-wide"
+        >
+          Make Payment
+        </button>
       </div>
     </div>
   </div>
@@ -71,14 +82,16 @@ export default {
   data() {
     return {
       cartItems: [], // Holds the cart data
-      shipping: 4.00,
-      taxRate: 0.10,
+      shipping: 4.0,
+      taxRate: 0.1,
+      voucher: '',
+      discountAmount: 0,
     };
   },
   computed: {
     subtotal() {
       return this.cartItems.reduce((sum, item) => {
-        const discountedPrice = item.price * (1 - item.discountPercentage / 100 || 0);
+        const discountedPrice = item.price * (1 - (item.discountPercentage || 0) / 100);
         return sum + discountedPrice * item.quantity;
       }, 0);
     },
@@ -86,7 +99,7 @@ export default {
       return this.subtotal * this.taxRate;
     },
     total() {
-      return this.subtotal + this.shipping + this.tax;
+      return this.subtotal + this.shipping + this.tax - this.discountAmount;
     },
   },
   methods: {
@@ -106,9 +119,16 @@ export default {
     goToCheckout() {
       this.$router.push('/checkoutShopping');
     },
+    applyVoucher() {
+      if (this.voucher === 'SAVE10') {
+        this.discountAmount = Math.min(10, this.subtotal * 0.1);
+      } else {
+        this.discountAmount = 0;
+        alert('Invalid voucher code');
+      }
+    },
   },
   mounted() {
-    // Retrieve the cart data from localStorage
     this.cartItems = JSON.parse(localStorage.getItem('shoppingCart')) || [];
   },
   watch: {
