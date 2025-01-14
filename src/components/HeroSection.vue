@@ -24,9 +24,9 @@
           everything to upgrade your mobile experience!
         </p>
       </div>
-      <div class="pt-8 max-sm:pt-1">
+      <!-- <div class="pt-8 max-sm:pt-1">
         <SearchField />
-      </div>
+      </div> -->
     </figcaption>
   </figure>
 </template>

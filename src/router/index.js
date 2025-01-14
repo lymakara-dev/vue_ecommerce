@@ -3,6 +3,7 @@ import MainLayout from "@/layouts/MainLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 import Cart from "@/Views/home/Cart.vue";
 import Cartv2 from "@/Views/home/Cartv2.vue";
+import PromotionProducts from "@/Views/home/PromotionProducts.vue";
 
 const routes = [
   { path: "/", redirect: "/products" },
@@ -41,6 +42,11 @@ const routes = [
         path: "/cartv2",
         name: "Cartv2",
         component: Cartv2,
+      },
+      {
+        path: "/promotion-products",
+        name: "PromotionProducts",
+        component: PromotionProducts,
       },
     ],
   },
