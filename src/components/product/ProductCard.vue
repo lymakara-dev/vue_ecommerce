@@ -38,11 +38,12 @@
         <span class="text-xl font-bold text-gray-900">
           {{ hasDiscount ? discountedPrice : price }}$
         </span>
-        <a
-          href="#"
+        <button
+          @click="addToCart({ id: productId, name, price, description, image })"
           class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center"
-          >Add to cart</a
         >
+          Add to cart
+        </button>
       </div>
     </div>
   </div>
@@ -65,6 +66,7 @@ export default {
     discountPercentage: Number,
     price: Number,
     productId: Number,
+    addToCart: Function,
   },
 
   computed: {
@@ -79,10 +81,9 @@ export default {
       ).toFixed(2);
     },
   },
-
   methods: {
     goToDetailPage() {
-      this.$router.push(`/product/${this.productId}`);
+      this.$router.push(`/products/${this.productId}`);
     },
   },
 };
