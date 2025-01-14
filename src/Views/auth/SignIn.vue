@@ -14,7 +14,7 @@
           <div
             class="left-0 right-0 inline-block border-gray-200 px-2 py-2.5 sm:px-4"
           >
-            <form class="flex flex-col gap-4 pb-4">
+            <form @submit.prevent="handleSignIn" class="flex flex-col gap-4 pb-4">
               <h1 class="text-2xl self-center font-bold dark:text-white">
                 Welcome Back
               </h1>
@@ -24,14 +24,16 @@
 
               <!-- Email Field -->
               <InputField
+                v-model="email"
                 label="Email:"
                 id="email"
                 type="email"
                 name="email"
                 placeholder="email@example.com"
               />
-              <!-- Confirm Password Field -->
+              <!-- Password Field -->
               <InputField
+                v-model="password"
                 label="Password:"
                 id="password"
                 type="password"
@@ -139,6 +141,22 @@ import InputField from "@/components/InputField.vue";
 export default {
   components: {
     InputField,
+  },
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  methods: {
+    handleSignIn() {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      if (!storedUser || storedUser.email !== this.email || storedUser.password !== this.password) {
+        alert("Invalid email or password!");
+        return;
+      }
+      this.$router.push('/products');
+    },
   },
 };
 </script>

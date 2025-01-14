@@ -4,9 +4,7 @@ import AuthLayout from "@/layouts/AuthLayout.vue";
 import Cart from "@/Views/home/Cart.vue";
 import Cartv2 from "@/Views/home/Cartv2.vue";
 import PromotionProducts from "@/Views/home/PromotionProducts.vue";
-import ShoppingCart from "@/Views/ShoppingCart.vue";
-import CheckoutDetail from "@/Views/CheckoutDetail.vue";
-import OrderComplete from "@/Views/OrderComplete.vue";
+
 
 const routes = [
   { path: "/", redirect: "/products" },
@@ -52,21 +50,20 @@ const routes = [
         component: PromotionProducts,
       },
       {
-        path: "/ShopCart",
+        path: "/shoppingCart",
         name: "ShoppingCart",
-        component: ShoppingCart,
+        component: () => import("@/components/cart/shoppingCart.vue"),
       },
       {
-        path: "/checkout",
-        name: "CheckoutDetail",
-        component: CheckoutDetail,
+        path: "/checkoutShopping",
+        name: "CheckoutShopping",
+        component: () => import("@/components/cart/checkoutShopping.vue"),
       },
       {
-        path: "/complete",
+        path: "/CompleteOrder",
         name: "CompleteOrder",
-        component: OrderComplete,
+        component: () => import("@/components/cart/CompleteOrder.vue"),
       },
-
 
     ],
   },

@@ -13,52 +13,67 @@
             <th class="text-center p-2">Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="(item, index) in cartItems" :key="index" class="border-b">
-            <td class="p-8">
-              <img :src="item.image" alt="" class="w-16 h-16 mr-4" />
-              <div class="flex items-center">
-                <div class="w-32 h-full shrink-0">
-        
-          </div>
-
-                <!-- <span>{{ item.name }}<br /><span class="text-gray-500">{{ item.color }}</span></span> -->
-              </div>
-            </td>
-            <td class="text-center p-3">
-              <button @click="decreaseQuantity(index)" class="px-3 py-1 border bg-blue-300  hover:bg-red-500">-</button>
-              <span>{{ item.quantity }}</span>
-              <button @click="increaseQuantity(index)" class="px-3 py-1 border bg-blue-300  hover:bg-green-500 ">+</button>
-            </td>
-            <!-- <td class="text-right p-2">${{ item.price.toFixed(2) }}</td> -->
-            <td class="text-right p-2">${{ (item.price ? item.price.toFixed(2) : '0.00') }}</td>
-            <td class="text-right p-2">${{ (item.price * item.quantity).toFixed(2) }}</td>
-            <td class="text-center p-2">
-              <button @click="removeItem(index)" class="text-blue-50 w-[7rem] h-[2rem] bg-red-500 rounded-lg hover:bg-blue-700">Remove</button>
-            </td>
-          </tr>
-        </tbody>
       </table>
+      <tbody>
+        <tr v-for="(product,index) in cartItems" :key="index">
+          <td>
+            <img :src="product.img" :alt="product.name" class="Product-img"/>
+            <div>
+              <p>{{ product.name }}</p>
+              <p class="color">Color:{{ product.color }}</p>
+              <button class="remove-btn" @click="removeItem(index)">Remove</button>
+            </div>
+            <div class="p-2 flex items-center">
+              <div class="quantity-control flex items-center">
+                <button class="p-1 bg-white text-black rounded-l cursor-pointer" @click="updateQuantity(index, -1)">-</button>
+                <input type="text" v-model="product.quantity" class="w-12 text-center bg-white text-black p-1">
+                <button class="increment p-1 bg-white text-black rounded-r cursor-pointer" @click="updateQuantity(index, 1)">+</button>
+              </div>
+            </div>
+          </td>
+          <td class="price">{{formatCurrency(product.price) }}</td>
+          <td class="quantity">{{formatCurrency(product.quantity * product.price)}}</td>
+        </tr>
+      </tbody>
     </div>
-    <!-- order summary -->
-    <div class="m-10  w-[50rem] h-[30rem] mr-[2rem] p-6 bg-gray-50 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold mb-4">Cart Summary</h2>
-    <div class="mb-4 p-6">
-      <h3 class="text-lg font-medium">Shipping Options</h3>
-      <div class="flex items-center mb-4 p-2">
-        <input type="radio" id="free" name="shipping" v-model="selectedShipping" value="0" class="mr-2  " />
-        <label for="free" class="cursor-pointer ">Free shipping ($0.00)</label>
-      </div>
-      <div class="flex items-center mb-4 p-2">
-        <input type="radio" id="express" name="shipping" v-model="selectedShipping" value="15" class="mr-2" />
-        <label for="express" class="cursor-pointer">Express shipping (+$15.00)</label>
-      </div>
-      <div class="flex items-center mb-4 p-2">
-        <input type="radio" id="pickup" name="shipping" v-model="selectedShipping" value="21" class="mr-2" />
-        <label for="pickup" class="cursor-pointer">Pick Up (+$21.00)</label>
-      </div>
     </div>
-    <div class="flex justify-between mb-2">
+
+    <div class="cart-summary">
+  <h2>Cart summary</h2>
+  <div class="shipping-options">
+    <label>
+      <input
+        type="radio"
+        name="shipping"
+        value="0"
+        v-model="shippingCost"
+      />
+      <h1>Free shipping</h1>
+      <span>$0.00</span>
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="shipping"
+        value="15"
+        v-model="shippingCost"
+      />
+      <h1>Express shipping</h1>
+      <span>+$15.00</span>
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="shipping"
+        value="21"
+        v-model="shippingCost"
+      />
+      <h1>Pick Up</h1>
+      <span>$21.00</span>
+    </label>
+  </div>
+  <div class="price-summary">
+    <div>
       <span>Subtotal</span>
       <span>${{ subtotal.toFixed(2) }}</span>
     </div>

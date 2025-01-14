@@ -7,14 +7,15 @@
         :key="item.id"
         class="flex justify-between items-center border-b py-2"
       >
-      <div>
-        <img :src="item.image" alt="" class="w-16 h-16 object-cover "/>
-        <div>
-          <h3 class="font-semibold">{{ item.name }}</h3>
-          <p>Price: ${{ item.price.toFixed(2) }}</p>
-          <p>Quantity: {{ item.quantity }}</p>
+        <div class="flex items-center gap-4">
+          <img :src="item.image" class="w-16 h-16 object-contain" />
+          <div>
+            <h3 class="font-semibold">{{ item.name }}</h3>
+            <p>Price: ${{ item.price.toFixed(2) }}</p>
+            <p>Discount: %{{ item.discountPercentage}} </p>
+            <p>Quantity: {{ item.quantity }}</p>
+          </div>
         </div>
-      </div>
         <button
           class="bg-red-500 text-white p-2 rounded-md hover:bg-red-600"
           @click="removeFromCart(item.id)"
@@ -56,10 +57,13 @@ export default {
       cart.removeItem(productId);
     },
     checkout() {
-      // alert("Checkout successful!");
-      this.$router.push('/ShopCart');
-      cart.clearCart();
+      // Save cart data to localStorage
+      localStorage.setItem('shoppingCart', JSON.stringify(this.cart.items));
+      
+      // Navigate to the shoppingCart page
+      this.$router.push('/shoppingCart');
     },
   },
 };
 </script>
+
