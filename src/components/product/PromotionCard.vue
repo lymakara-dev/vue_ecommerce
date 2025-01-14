@@ -1,8 +1,8 @@
 <template>
   <div
-    class="w-[400px] bg-white border border-gray-200 rounded-lg shadow flex flex-row"
+    class="w-[420px] bg-white border border-gray-200 rounded-lg shadow flex flex-row"
   >
-    <div class="p-5">
+    <div class="p-5 w-9/12">
       <a href="#">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {{ title }}
@@ -18,9 +18,9 @@
         Shop Now
       </a>
     </div>
-    <div class="flex justify-center items-center w-[200px]">
+    <div class="flex justify-center items-center w-52">
       <a href="#">
-        <img class="rounded-t-lg" :src="image" alt="" />
+        <img class="rounded-lg" :src="image" :alt="alt" />
       </a>
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
     title: String,
     description: String,
     image: String,
+    alt: String,
   },
 };
 </script>
