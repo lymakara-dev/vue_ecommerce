@@ -43,6 +43,7 @@ import cart from "@/stores/cart";
 export default {
   name: "Cart",
   data() {
+    console.log("cart: " + cart.items);
     return { cart };
   },
   methods: {
