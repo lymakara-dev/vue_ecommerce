@@ -37,8 +37,7 @@ const promotions = [
   {
     id: 6,
     title: "Valentine's Special",
-    description:
-      "Buy 1 pair of wireless earbuds, get 10% off your second pair!",
+    description: "Buy 1 pair of wireless earbuds, get 10% off.",
     image: "src/assets/images/promotions/pngegg (2).png",
     expiryDate: "2025-02-14",
   },

@@ -175,7 +175,7 @@
       placeOrder() {
         console.log(this.form);
         // alert('Order placed successfully!');
-        this.$router.push('/Success');
+        this.$router.push('/complete');
       },
 
       increment(id) {

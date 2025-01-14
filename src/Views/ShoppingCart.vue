@@ -1,15 +1,12 @@
 <template>
-  <Manu />
   <CartItem />
 </template>
 <script>
-import Manu from "@/components/cart/Manu.vue";
 import CartItem from "@/components/cart/CartItem.vue";
 
 export default {
-  name: "Cart",
+  name: "ShoppingCart",
   components: {
-    Manu,
     CartItem,
   },
 };
