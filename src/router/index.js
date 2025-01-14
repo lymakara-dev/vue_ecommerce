@@ -59,6 +59,11 @@ const routes = [
         name: "CheckoutShopping",
         component: () => import("@/components/cart/checkoutShopping.vue"),
       },
+      {
+        path: "/CompleteOrder",
+        name: "CompleteOrder",
+        component: () => import("@/components/cart/CompleteOrder.vue"),
+      },
 
     ],
   },

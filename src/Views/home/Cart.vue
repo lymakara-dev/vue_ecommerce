@@ -12,6 +12,7 @@
           <div>
             <h3 class="font-semibold">{{ item.name }}</h3>
             <p>Price: ${{ item.price.toFixed(2) }}</p>
+            <p>Discount: %{{ item.discountPercentage}} </p>
             <p>Quantity: {{ item.quantity }}</p>
           </div>
         </div>
