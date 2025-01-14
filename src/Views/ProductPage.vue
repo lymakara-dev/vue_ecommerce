@@ -142,7 +142,7 @@ export default {
       const index = this.images.indexOf(image);
       if (index !== -1) {
         //if the image exists in the array
-        this.images[index] = this.mainImage;
+        this.image[index] = this.mainImage;
         this.mainImage = image;
       }
     },
