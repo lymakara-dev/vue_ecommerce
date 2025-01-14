@@ -1,31 +1,28 @@
-<!-- <template>
-    <div class="wrapper1">
-        <img src="@/assets/images/headphoneWhite.png" alt="Product Picture" class="displayedProduct">
-    </div>
-    <div class="wrapper2" >
-        <img src="@/assets/images/headphonePink.png" alt="Product Picture" class="pic">
-        <img src="@/assets/images/headphoneBlue.png" alt="Product Picture" class="pic">
-        <img src="@/assets/images/headphoneBlack.png" alt="Product Picture" class="pic">
-        <img src="@/assets/images/headphoneRed.png" alt="Product Picture" class="pic">
-        <img src="@/assets/images/headphoneYellow.png" alt="Product Picture" class="pic">
-    </div>
-</template> -->
-
-
 <template>
     <div class="wrapper1">
         <img :src="mainImage" alt="Product Picture" class="displayedProduct" />
     </div>
     <div class="wrapper2">
-        <img v-for="(image, index) in images" :key="index" :src="image" alt="Product Picture" class="pic" @click="updateMainImage(image)"/>
+        <img v-for="(image, index) in images" :key="index" 
+            :src="image" alt="Product Picture" class="pic" 
+            @click="updateMainImage(image)"
+        />
     </div>
   </template>
   
   <script>
   export default {
     props: {
-      mainImage: String,
-      images: Array,
+    //   mainImage: String,
+    //   images: Array,
+      mainImage: {
+            type: String,
+            required: true,
+        },
+        images: {
+            type: Array,
+            required: true,
+        },  
     },
 
     methods:{
