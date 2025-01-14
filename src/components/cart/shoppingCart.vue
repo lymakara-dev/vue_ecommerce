@@ -2,7 +2,7 @@
   <div class="font-sans">
     <div class="grid lg:grid-cols-3 gap-10 p-4">
       <div class="lg:col-span-2 bg-white divide-y">
-        <div v-for="(item, index) in cartProducts" :key="item.id" class="flex items-start max-sm:flex-col gap-4 py-4">
+        <div v-for="(item, index) in cartItems" :key="item.id" class="flex items-start max-sm:flex-col gap-4 py-4">
           <div class="w-32 h-full shrink-0">
             <img :src="item.image" class="w-full aspect-[112/149] object-contain" />
           </div>
@@ -13,6 +13,7 @@
               <div class="space-y-1">
                 <h6 class="text-sm text-gray-800">Size: <strong class="ml-2">{{ item.size }}</strong></h6>
                 <h6 class="text-sm text-gray-800">Color: <strong class="ml-2">{{ item.color }}</strong></h6>
+                <h6 class="text-sm text-gray-800">Price: <strong class="ml-2">{{ formatCurrency(item.price) }}</strong></h6>
               </div>
 
               <div class="mt-6 flex flex-wrap gap-4">
@@ -60,7 +61,6 @@
 import QuantityPrice from '../QuantityPrice.vue';
 import RemoveButton from '../buttons/RemoveButton.vue';
 import MoveToWishlistButton from '../buttons/MoveToWishlistButton.vue';
-import products from '../../stores/products.js';
 
 export default {
   components: {
@@ -70,29 +70,15 @@ export default {
   },
   data() {
     return {
-      cartItems: [
-        { id: 1, quantity: 1 },
-        { id: 2, quantity: 1 },
-        { id: 3, quantity: 1 },
-        { id: 4, quantity: 1 },
-      ],
+      cartItems: [], // Holds the cart data
       shipping: 4.00,
       taxRate: 0.10,
     };
   },
   computed: {
-    cartProducts() {
-      return this.cartItems.map(cartItem => {
-        const product = products.find(p => p.id === cartItem.id);
-        return {
-          ...product,
-          quantity: cartItem.quantity,
-        };
-      });
-    },
     subtotal() {
-      return this.cartProducts.reduce((sum, item) => {
-        const discountedPrice = item.price * (1 - item.discountPercentage / 100);
+      return this.cartItems.reduce((sum, item) => {
+        const discountedPrice = item.price * (1 - item.discountPercentage / 100 || 0);
         return sum + discountedPrice * item.quantity;
       }, 0);
     },
@@ -107,16 +93,30 @@ export default {
     updateQuantity(index, newQuantity) {
       if (newQuantity > 0) {
         this.cartItems[index].quantity = newQuantity;
+        localStorage.setItem('shoppingCart', JSON.stringify(this.cartItems));
       }
     },
     removeItem(index) {
       this.cartItems.splice(index, 1);
+      localStorage.setItem('shoppingCart', JSON.stringify(this.cartItems));
     },
     formatCurrency(value) {
       return `$${value.toFixed(2)}`;
     },
     goToCheckout() {
       this.$router.push('/checkoutShopping');
+    },
+  },
+  mounted() {
+    // Retrieve the cart data from localStorage
+    this.cartItems = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+  },
+  watch: {
+    cartItems: {
+      handler() {
+        localStorage.setItem('shoppingCart', JSON.stringify(this.cartItems));
+      },
+      deep: true,
     },
   },
 };

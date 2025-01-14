@@ -135,7 +135,7 @@
             Already have an account?
             <a
               class="text-blue-500 underline hover:text-blue-600"
-              href="/signin"
+              href="/auth/signin"
               >Sign in here</a
             >
           </div>
@@ -171,7 +171,7 @@ export default {
         password: this.password,
       };
       localStorage.setItem('user', JSON.stringify(userData));
-      this.$router.push('/signin');
+      this.$router.push('/auth/signin');
     },
   },
 };

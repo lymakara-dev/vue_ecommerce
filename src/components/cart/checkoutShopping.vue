@@ -19,7 +19,7 @@
           Order Complete
         </li>
       </ol>
-      <form class="mt-8 space-y-6">
+      <form class="mt-8 space-y-6" @submit.prevent="handleSubmit">
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h2 class="text-lg font-medium mb-6">Contact Information</h2>
           <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -130,6 +130,14 @@ export default {
     CheckIcon,
     ShoppingCartIcon,
     CheckCircleIcon,
+  },
+  methods: {
+    handleSubmit() {
+      // Logic to handle form submission and display the checkout page
+      console.log("Form submitted");
+      // Redirect to the checkout page or display a success message
+      this.$router.push({ name: 'CheckoutPage' });
+    },
   },
 };
 </script>

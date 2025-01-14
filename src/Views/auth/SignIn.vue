@@ -124,7 +124,7 @@
                 Doesn't have account?
                 <a
                   class="text-blue-500 underline hover:text-blue-600"
-                  href="/signup"
+                  href="/auth/signup"
                   >Create account here</a
                 >
               </div>
@@ -155,7 +155,7 @@ export default {
         alert("Invalid email or password!");
         return;
       }
-      this.$router.push('/home');
+      this.$router.push('/products');
     },
   },
 };

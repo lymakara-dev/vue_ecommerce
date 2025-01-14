@@ -1,64 +1,89 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SignIn from "@/Views/auth/SignIn.vue";
-import SignUp from "@/Views/auth/SignUp.vue";
-import HomePage from "@/Views/HomePage.vue";
-import ProductPage from "@/Views/ProductPage.vue";
-import Cart from "@/Views/Cart.vue";
-import ContactINFO from "@/Views/ContactINFO.vue";
-import ShoppingCart from "@/components/cart/shoppingCart.vue";
-import Navbar2 from "@/components/common/Navbar2.vue";
-import checkoutShopping from "@/components/cart/checkoutShopping.vue";
+import MainLayout from "@/layouts/MainLayout.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
+import Cart from "@/Views/home/Cart.vue";
+import Cartv2 from "@/Views/home/Cartv2.vue";
+import PromotionProducts from "@/Views/home/PromotionProducts.vue";
+
+
+const routes = [
+  { path: "/", redirect: "/products" },
+  {
+    path: "/",
+    name: "MainLayout",
+    component: MainLayout,
+    children: [
+      {
+        path: "",
+        name: "Home",
+        component: () => import("@/Views/Home.vue"),
+        children: [
+          {
+            path: "products",
+            name: "ProductsList",
+            component: () => import("@/Views/home/ProductsList.vue"),
+            props: (route) => ({
+              selectedCategory: route.query.category || "All", // Pass query params as props
+            }),
+          },
+          {
+            path: "products/:productId",
+            name: "ProductDetail",
+            component: () => import("@/Views/home/ProductDetail.vue"),
+            props: true,
+          },
+        ],
+      },
+      {
+        path: "/cart",
+        name: "Cart",
+        component: Cart,
+      },
+      {
+        path: "/cartv2",
+        name: "Cartv2",
+        component: Cartv2,
+      },
+      {
+        path: "/promotion-products",
+        name: "PromotionProducts",
+        component: PromotionProducts,
+      },
+      {
+        path: "/shoppingCart",
+        name: "ShoppingCart",
+        component: () => import("@/components/cart/shoppingCart.vue"),
+      },
+      {
+        path: "/checkoutShopping",
+        name: "CheckoutShopping",
+        component: () => import("@/components/cart/checkoutShopping.vue"),
+      },
+
+    ],
+  },
+  {
+    path: "/auth",
+    anme: "Auth",
+    component: AuthLayout,
+    children: [
+      {
+        path: "signin",
+        name: "Signin",
+        component: () => import("@/Views/auth/SignIn.vue"),
+      },
+      {
+        path: "signup",
+        name: "Signup",
+        component: () => import("@/Views/auth/SignUp.vue"),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "Home",
-      component: HomePage,
-    },
-    {
-      path: "/signin",
-      name: "SignIn",
-      component: SignIn,
-    },
-    {
-      path: "/signup",
-      name: "SignUp",
-      component: SignUp,
-    },
-    {
-      path: "/cart",
-      name: "cart",
-      component: Cart,
-    },
-    {
-      path: "/contact",
-      name: "contactinform",
-      component: ContactINFO,
-    },
-
-    {
-      path: "/productpage",
-      name: "ProductPage",
-      component: ProductPage,
-    },
-    {
-      path: "/shoppingcart",
-      name: "shoppingCart",
-      component: ShoppingCart,
-    },
-    {
-      path: "/Navbar2",
-      name: "Navbar2",
-      component: Navbar2,
-    },
-    {
-      path: "/checkoutShopping",
-      name: "checkoutShopping",
-      component: checkoutShopping,
-    },
-  ],
+  routes,
 });
 
 export default router;
