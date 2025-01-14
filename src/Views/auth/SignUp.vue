@@ -11,10 +11,11 @@
             Create a new account
           </h2>
         </div>
-        <form method="POST" action="#">
+        <form @submit.prevent="handleSignUp">
           <div class="space-y-2">
             <!-- Email Field -->
             <InputField
+              v-model="email"
               label="Email:"
               id="email"
               type="email"
@@ -24,6 +25,7 @@
 
             <!-- Username Field -->
             <InputField
+              v-model="username"
               label="Username:"
               id="username"
               type="text"
@@ -33,6 +35,7 @@
 
             <!-- Password Field -->
             <InputField
+              v-model="password"
               label="Password:"
               id="password"
               type="password"
@@ -42,6 +45,7 @@
 
             <!-- Confirm Password Field -->
             <InputField
+              v-model="confirmPassword"
               label="Confirm Password:"
               id="confirm-password"
               type="password"
@@ -146,6 +150,29 @@ import InputField from "@/components/InputField.vue";
 export default {
   components: {
     InputField,
+  },
+  data() {
+    return {
+      email: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+    };
+  },
+  methods: {
+    handleSignUp() {
+      if (this.password !== this.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+      const userData = {
+        email: this.email,
+        username: this.username,
+        password: this.password,
+      };
+      localStorage.setItem('user', JSON.stringify(userData));
+      this.$router.push('/auth/signin');
+    },
   },
 };
 </script>
