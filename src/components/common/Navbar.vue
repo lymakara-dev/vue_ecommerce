@@ -18,13 +18,15 @@
           >
         </div>
         <div>
-          <button
-            type="submit"
-            class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
-            @click="goToRoute"
-          >
-            Join
-          </button>
+          <div>
+            <button
+              type="submit"
+              class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 text-sm md:text-base lg:text-lg xl:text-xl"
+              @click="toggleAuth"
+            >
+              {{ isLoggedIn ? "Sign Out" : "Sign In" }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -38,22 +40,38 @@ import {
 } from "@heroicons/vue/24/outline";
 import { useRouter } from "vue-router";
 import cart from "@/stores/cart";
+import { inject } from "vue";
 
 export default {
   name: "Navbar",
   components: {
     ShoppingBagIcon,
     InformationCircleIcon,
-    
   },
+
+  data() {
+    return {
+      cart,
+    };
+  },
+
   setup() {
     const router = useRouter();
-    return { cart, router };
+    const isLoggedIn = inject("isLoggedIn");
+    const handleSignOut = inject("handleSignOut");
+
+    return { router, isLoggedIn, handleSignOut };
   },
+
   methods: {
-    goToRoute() {
-      this.$router.push("/auth/signin");
+    toggleAuth() {
+      if (this.isLoggedIn) {
+        this.handleSignOut();
+      } else {
+        this.$router.push("/auth/signin");
+      }
     },
+
     goToCart() {
       this.router.push({ name: "Cart" });
     },

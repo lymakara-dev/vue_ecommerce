@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer mt-4">
     <div class="infos">
       <h3 style="font-size: 40px; font-weight: bold; display: flex">
         PhoneEdge
@@ -59,7 +59,7 @@
 
     <div class="contact">
       <div class="wrapper 1">
-        <h4 style="align-items: center; font-size: 17px;">FOLLOW US</h4>
+        <h4 style="align-items: center; font-size: 17px">FOLLOW US</h4>
         <div class="new">
           <i class="fa-brands fa-facebook"></i>
           <a href="https://www.facebook.com">Facebook</a>
@@ -73,7 +73,7 @@
       </div>
 
       <div class="wrapper" style="margin-right: 100px">
-        <h4 style="align-items: center; font-size: 17px;">CONTACT US</h4>
+        <h4 style="align-items: center; font-size: 17px">CONTACT US</h4>
         <div class="new one">
           <i class="fa-regular fa-envelope"></i>
           <a href="mailto:kongsopheakvortey@gmail.com">info@PhoneEdge.com</a>
@@ -82,7 +82,12 @@
           <i class="fa-solid fa-phone"></i>
           <p>(+855) 061 116 666</p>
           <i class="fa-brands fa-telegram"></i>
-          <a href="https://t.me/c/2252504820/1" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a
+            href="https://t.me/c/2252504820/1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Telegram</a
+          >
         </div>
       </div>
     </div>
@@ -138,38 +143,39 @@ export default {
 }
 
 @media only screen and (max-width: 1140px) {
-  .wrapper{
+  .wrapper {
     flex-direction: row;
     width: auto;
     flex-wrap: wrap;
   }
-  .footer, .contact{
+  .footer,
+  .contact {
     flex-direction: column;
     width: auto;
     gap: 0;
   }
-  .new{
-    grid-auto-flow: column ;
+  .new {
+    grid-auto-flow: column;
     grid-template-columns: auto;
     padding-left: 60px;
     height: 50px;
   }
 
-  .new.one{
-    grid-auto-flow: column ;
+  .new.one {
+    grid-auto-flow: column;
     grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
     padding-left: 60px;
     height: 50px;
   }
-} 
+}
 
 @media only screen and (max-width: 870) {
-  .new.one{
+  .new.one {
     grid-auto-rows: 2fr;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     padding-left: 60px;
     height: 50px;
     background-color: pink;
   }
-} 
+}
 </style>
