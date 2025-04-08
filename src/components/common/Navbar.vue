@@ -2,14 +2,14 @@
   <nav class="bg-white p-6">
     <div class="m-auto w-full flex flex-row justify-between items-center">
       <div class="text-primary font-bold text-3xl md:text-4xl lg:text-5xl">
-        PhoneEdge
+        <button @click="goHome">PhoneEdge</button>
       </div>
       <div class="flex flex-row gap-2 items-center">
         <InformationCircleIcon class="h-6 w-6" />
         <div class="text-sm md:text-base lg:text-lg xl:text-xl max-sm:hidden">
           Need Help?
         </div>
-        <div class="basket relative" @click="goToCart">
+        <div class="basket relative cursor-pointer" @click="goToCart">
           <span class="text-3xl transform scaleX(-1)">🛒</span>
           <span
             v-if="cart.itemCount > 0"
@@ -74,6 +74,10 @@ export default {
 
     goToCart() {
       this.router.push({ name: "Cart" });
+    },
+
+    goHome() {
+      this.router.push("/products");
     },
   },
 };

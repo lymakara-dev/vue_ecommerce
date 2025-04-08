@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[420px] bg-white border border-gray-200 rounded-lg shadow flex flex-row"
+    class="w-[420px] bg-white border border-gray-200 rounded-lg shadow flex flex-row transition-transform duration-300 transform hover:scale-105 hover:shadow-xl"
   >
     <div class="p-5 w-9/12">
       <a href="/promotion-products">
@@ -20,7 +20,11 @@
     </div>
     <div class="flex justify-center items-center w-52">
       <a href="/promotion-products">
-        <img class="rounded-lg" :src="image" :alt="alt" />
+        <img
+          class="rounded-lg transition-all duration-300 transform hover:scale-105"
+          :src="image"
+          :alt="alt"
+        />
       </a>
     </div>
   </div>

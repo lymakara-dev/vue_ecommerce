@@ -3,8 +3,14 @@
     <HeroSection />
 
     <!-- promotion offer -->
-    <div class="flex gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
-      <div v-for="promotion in promotionsData" :key="promotion.id">
+    <div
+      class="flex gap-4 overflow-x-auto whitespace-nowrap px-4 py-2 scrollbar-hide scroll-smooth"
+    >
+      <div
+        v-for="promotion in promotionsData"
+        :key="promotion.id"
+        class="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] flex-shrink-0"
+      >
         <PromotionCard
           :title="promotion.title"
           :description="promotion.description"
@@ -14,9 +20,10 @@
       </div>
     </div>
 
-    <div class="flex flex-row mx-8 gap-8">
-      <!-- side bar -->
-      <div class="grow flex flex-col gap-2">
+    <div class="flex flex-col md:flex-row mx-4 md:mx-8 gap-4 md:gap-8">
+      <!-- Sidebar -->
+      <div class="hidden md:flex md:w-1/4 flex-col gap-2 overflow-x-auto">
+        <!-- All Category -->
         <div
           class="cursor-pointer border border-gray-300 p-4 rounded-md text-center shadow-md hover:bg-gray-100"
           :class="{ 'bg-gray-200': selectedCategory === 'All' }"
@@ -24,6 +31,8 @@
         >
           <p class="font-bold">All</p>
         </div>
+
+        <!-- Categories -->
         <div
           v-for="category in categoriesData"
           :key="category.id"
@@ -35,29 +44,14 @@
             :image="category.image"
             :alt="category.name"
             :category-name="category.name"
-          >
-          </CategoryCard>
+          />
         </div>
       </div>
-      <router-view></router-view>
-      <div>
-        <RouteStatus></RouteStatus>
 
-        <!-- display product  -->
-        <div class="grid grid-cols-4 gap-4">
-          <div v-for="product in filteredProducts" :key="product.id">
-            <ProductCard
-              :image="product.image"
-              :alt="product.name"
-              :name="product.name"
-              :description="product.description"
-              :rating-point="product.rating"
-              :discount-percentage="product.discountPercentage"
-              :price="product.price"
-              :productId="product.id"
-            ></ProductCard>
-          </div>
-        </div>
+      <!-- Main content (e.g. product list) goes here -->
+      <div class="flex-grow">
+        <!-- Example content placeholder -->
+        <slot />
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="w-full h-[450px] max-w-[18rem] bg-white border border-gray-200 rounded-lg shadow flex flex-col"
+    class="w-full sm:w-[18rem] bg-white border border-gray-200 rounded-lg shadow flex flex-col transition-all duration-300 transform hover:scale-105 hover:shadow-lg h-full"
   >
-    <div class="flex justify-center items-center h-[210px] relative">
+    <div class="flex justify-center items-center relative p-2 sm:h-[210px]">
       <div @click="goToDetailPage">
         <img
-          class="rounded-lg object-cover h-52 w-52"
+          class="rounded-lg object-cover w-32 h-32 sm:w-52 sm:h-52 transition-all duration-300"
           :src="image"
           :alt="alt"
         />
@@ -13,31 +13,37 @@
 
       <div
         v-if="hasDiscount"
-        class="absolute top-5 right-5 bg-orange-500 p-2 rounded-lg text-white text-sm font-bold"
+        class="absolute top-2 right-2 sm:top-5 sm:right-5 bg-orange-500 p-1 sm:p-2 rounded-lg text-white text-xs sm:text-sm font-bold"
       >
         {{ discountPercentage }}%
       </div>
     </div>
-    <div class="grow px-5 pb-5">
-      <a href="#">
-        <h5 class="text-xl font-semibold tracking-tight text-gray-900">
-          {{ name }}
-        </h5>
-      </a>
-      <p>{{ description }}</p>
-      <RatingStar :rating-point="ratingPoint"></RatingStar>
+
+    <div class="flex-1 px-4 sm:px-5 pb-3 sm:pb-5">
+      <h5
+        class="text-lg sm:text-xl font-semibold tracking-tight text-gray-900 line-clamp-2"
+      >
+        {{ name }}
+      </h5>
+      <p class="text-sm text-gray-600 line-clamp-2">{{ description }}</p>
+      <RatingStar :rating-point="ratingPoint" />
     </div>
-    <div class="px-5 pb-5">
-      <div class="flex flex-row items-center justify-between">
-        <span
-          v-if="hasDiscount"
-          class="text-xl font-bold text-red-500 line-through"
-        >
-          {{ price }}$
-        </span>
-        <span class="text-xl font-bold text-gray-900">
-          {{ hasDiscount ? discountedPrice : price }}$
-        </span>
+
+    <div class="px-4 sm:px-5 pb-4 sm:pb-5">
+      <div
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+      >
+        <div>
+          <span
+            v-if="hasDiscount"
+            class="text-sm sm:text-lg font-bold text-red-500 line-through"
+          >
+            {{ price }}$
+          </span>
+          <span class="text-base sm:text-lg font-bold text-gray-900 ml-2">
+            {{ hasDiscount ? discountedPrice : price }}$
+          </span>
+        </div>
         <button
           @click="
             addToCart({
@@ -49,7 +55,7 @@
               discountPercentage,
             })
           "
-          class="text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center"
+          class="w-full sm:w-auto text-white bg-primary hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
         >
           Add to cart
         </button>

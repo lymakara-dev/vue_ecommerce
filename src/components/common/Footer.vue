@@ -1,93 +1,48 @@
 <template>
-  <div class="footer mt-4">
+  <div class="footer mt-6">
+    <!-- Left: Brand & Payment -->
     <div class="infos">
-      <h3 style="font-size: 40px; font-weight: bold; display: flex">
-        PhoneEdge
-      </h3>
-      <p style="font-size: 16px; display: flex">WE ACCEPT</p>
+      <h3 class="text-3xl sm:text-4xl font-bold">PhoneEdge</h3>
+      <p class="text-base mt-2">WE ACCEPT</p>
       <div class="payingMethod">
-        <img src="@/assets/images/ABA.png" style="height: 32px" alt="Bank" />
-        <img src="@/assets/images/Acleda.png" style="height: 32px" alt="Bank" />
-        <img
-          src="@/assets/images/Canadia.png"
-          style="height: 32px"
-          alt="Bank"
-        />
-        <img
-          src="@/assets/images/PayPal.png"
-          style="
-            background-color: white;
-            border: 1px;
-            border-radius: 3px;
-            height: 25px;
-            display: flex;
-            align-items: end;
-            margin-top: 3px;
-            margin-right: 4px;
-          "
-          alt="Bank"
-        />
-        <img
-          src="@/assets/images/VISA.png"
-          style="
-            background-color: white;
-            border: 1px;
-            border-radius: 3px;
-            height: 25px;
-            display: flex;
-            align-items: end;
-            margin-top: 3px;
-            margin-right: 5px;
-          "
-          alt="Bank"
-        />
-        <img
-          src="@/assets/images/Wing.png"
-          style="
-            background-color: greenyellow;
-            border: 1px;
-            border-radius: 3px;
-            height: 25px;
-            display: flex;
-            align-items: end;
-            margin-top: 3px;
-          "
-          alt="Bank"
-        />
+        <img src="/ABA.png" alt="ABA" />
+        <img src="/Acleda.png" alt="Acleda" />
+        <img src="/Canadia.png" alt="Canadia" />
+        <img src="/PayPal.png" alt="PayPal" />
+        <img src="/VISA.png" alt="VISA" />
+        <img src="/Wing.png" alt="Wing" />
       </div>
     </div>
 
+    <!-- Right: Social & Contact -->
     <div class="contact">
-      <div class="wrapper 1">
-        <h4 style="align-items: center; font-size: 17px">FOLLOW US</h4>
+      <!-- Socials -->
+      <div class="wrapper">
+        <h4 class="section-title">FOLLOW US</h4>
         <div class="new">
-          <i class="fa-brands fa-facebook"></i>
-          <a href="https://www.facebook.com">Facebook</a>
-          <i class="fa-brands fa-tiktok"></i>
-          <a href="https://www.tiktok.com">TikTok</a>
-          <i class="fa-brands fa-youtube"></i>
-          <a href="https://www.tiktok.com">YouTube</a>
-          <i class="fa-brands fa-threads"></i>
-          <a href="https://www.tiktok.com">Threads</a>
+          <i class="fa-brands fa-facebook"></i
+          ><a href="https://facebook.com">Facebook</a>
+          <i class="fa-brands fa-tiktok"></i
+          ><a href="https://tiktok.com">TikTok</a>
+          <i class="fa-brands fa-youtube"></i
+          ><a href="https://youtube.com">YouTube</a>
+          <i class="fa-brands fa-threads"></i
+          ><a href="https://threads.net">Threads</a>
         </div>
       </div>
 
-      <div class="wrapper" style="margin-right: 100px">
-        <h4 style="align-items: center; font-size: 17px">CONTACT US</h4>
+      <!-- Contact -->
+      <div class="wrapper">
+        <h4 class="section-title">CONTACT US</h4>
         <div class="new one">
-          <i class="fa-regular fa-envelope"></i>
-          <a href="mailto:kongsopheakvortey@gmail.com">info@PhoneEdge.com</a>
+          <i class="fa-regular fa-envelope"></i
+          ><a href="mailto:info@PhoneEdge.com">info@PhoneEdge.com</a>
           <i class="fa-solid fa-phone"></i>
           <p>(+855) 018 116 666</p>
           <i class="fa-solid fa-phone"></i>
           <p>(+855) 061 116 666</p>
-          <i class="fa-brands fa-telegram"></i>
-          <a
-            href="https://t.me/c/2252504820/1"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Telegram</a
-          >
+          <i class="fa-brands fa-telegram"></i
+          ><a href="https://t.me/c/2252504820/1" target="_blank">Telegram</a>
         </div>
       </div>
     </div>
@@ -106,76 +61,77 @@ export default {
   font-family: serif;
   color: aliceblue;
   display: flex;
+  flex-wrap: wrap;
   padding: 30px;
+  gap: 40px;
 }
 
 .infos {
+  flex: 1 1 300px;
+}
+
+.payingMethod {
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.payingMethod img {
+  height: 32px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 2px;
 }
 
 .contact {
-  font-size: 12px;
+  flex: 1 1 300px;
   display: flex;
-  gap: 100px;
-}
-.payingMethod {
-  display: flex;
-  height: 64px;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .wrapper {
+  flex: 1 1 150px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-right: 30px;
-  width: 150px;
 }
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .new {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-flow: row;
-  align-items: center;
-  font-size: 15px;
-  column-gap: 20px;
-  height: 200px;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
 }
 
-@media only screen and (max-width: 1140px) {
-  .wrapper {
-    flex-direction: row;
-    width: auto;
-    flex-wrap: wrap;
+.new.one {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .footer,
+
   .contact {
     flex-direction: column;
-    width: auto;
-    gap: 0;
-  }
-  .new {
-    grid-auto-flow: column;
-    grid-template-columns: auto;
-    padding-left: 60px;
-    height: 50px;
+    gap: 20px;
   }
 
+  .new,
   .new.one {
-    grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
-    padding-left: 60px;
-    height: 50px;
+    grid-template-columns: 1fr 3fr;
   }
-}
 
-@media only screen and (max-width: 870) {
-  .new.one {
-    grid-auto-rows: 2fr;
-    grid-template-columns: repeat(4, 1fr);
-    padding-left: 60px;
-    height: 50px;
-    background-color: pink;
+  .payingMethod {
+    justify-content: flex-start;
   }
 }
 </style>

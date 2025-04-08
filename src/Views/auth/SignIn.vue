@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-screen w-screen bg-[url('../assets/images/bg-signin.jpg')] bg-cover bg-center items-center min-h-screen bg-blue-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+    class="h-screen w-screen bg-[url('/bg-signin.jpg')] bg-cover bg-center items-center min-h-screen bg-blue-500 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
     <div
       class="flex items-center justify-center mt-8 sm:mx-auto sm:w-full sm:max-w-md"

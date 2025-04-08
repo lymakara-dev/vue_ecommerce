@@ -1,5 +1,6 @@
 <template>
-  <div class="flex items-center mt-2.5 mb-5">
+  <div class="flex items-center mt-2.5 mb-5 flex-wrap">
+    <!-- Star Rating -->
     <div class="flex items-center space-x-1 rtl:space-x-reverse">
       <svg
         v-for="index in 5"
@@ -19,10 +20,13 @@
         />
       </svg>
     </div>
+
+    <!-- Rating Text -->
     <span
-      class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3"
-      >{{ ratingPoint }}</span
+      class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3 mt-1 sm:mt-0"
     >
+      {{ ratingPoint }}
+    </span>
   </div>
 </template>
 

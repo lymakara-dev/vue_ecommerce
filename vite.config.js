@@ -13,4 +13,19 @@ export default defineConfig({
       "@fortawesome": "/node_modules/@fortawesome",
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("firebase")) return "firebase";
+            if (id.includes("vue")) return "vue-vendor";
+            if (id.includes("@fortawesome")) return "fontawesome";
+            return "vendor";
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 800, // optional: bump up the warning limit
+  },
 });

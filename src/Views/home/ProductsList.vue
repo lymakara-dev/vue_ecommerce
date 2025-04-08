@@ -62,8 +62,14 @@
 
   <div>
     <!-- Product List -->
-    <div class="grid grid-cols-4 gap-4">
-      <div v-for="product in filteredProducts" :key="product.id">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+    >
+      <div
+        v-for="product in filteredProducts"
+        :key="product.id"
+        class="flex justify-center"
+      >
         <ProductCard
           :image="product.image"
           :alt="product.name"

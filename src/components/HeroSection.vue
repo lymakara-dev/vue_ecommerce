@@ -5,7 +5,7 @@
     <a href="#">
       <img
         class="max-w-full max-h-full object-cover"
-        src="../assets/images/bg-signin.jpg"
+        src="/bg-signin.jpg"
         alt="image description"
       />
     </a>
