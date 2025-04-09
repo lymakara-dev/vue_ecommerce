@@ -123,20 +123,25 @@ const router = createRouter({
 });
 
 // Improved Auth Guard with Firebase onAuthStateChanged
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requireAuth);
 
   if (!requiresAuth) return next();
 
   const auth = getAuth();
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    unsubscribe(); // Stop listening after first call
 
+  // Wait for the authentication state to be resolved
+  await new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe(); // Stop listening after the first state change
+      resolve(user); // Resolve the promise once we have the user
+    });
+  }).then((user) => {
     if (user) {
-      next();
+      return next(); // User is authenticated, proceed to route
     } else {
       alert("You don't have access!");
-      next("/auth/signin");
+      return next("/auth/signin"); // Redirect to signin page if not authenticated
     }
   });
 });
