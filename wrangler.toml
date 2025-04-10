@@ -1,0 +1,11 @@
+name = "phoneedge"
+type = "javascript"
+main = "worker.js"
+compatibility_date = "2025-04-10"
+
+[site]
+bucket = "./dist"
+
+[[routes]]
+pattern = "yourdomain.com/*"
+script = "phoneedge"
