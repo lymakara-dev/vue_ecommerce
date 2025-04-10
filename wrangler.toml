@@ -1,5 +1,13 @@
 name = "phoneedge"
-compatibility_date = "2025-04-07"
+type = "javascript"
 
-[assets]
-directory = "./dist"
+[site]
+bucket = "./dist"
+entry-point = "."
+
+[build]
+upload.format = "modules"
+upload.main = "worker.js"
+
+[env.production]
+route = "phoneedge.lymakara07012004.workers.dev/*"
