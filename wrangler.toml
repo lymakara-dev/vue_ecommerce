@@ -1,5 +1,15 @@
 name = "phoneedge"
-compatibility_date = "2025-04-07"
+type = "module" # Use "module" for ES Module Workers
+account_id = "27a42c1d7fb2e15ea8af26cda3129853"
+compatibility_date = "2025-04-10"
 
-[assets]
-directory = "./dist"
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"
+entry-point = "."
+
+[env.production]
+# Uncomment and configure routes if deploying to a specific domain
+# routes = ["https://yourdomain.com/*"]
