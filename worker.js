@@ -1,16 +1,29 @@
+import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
+
 export default {
   async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-
-    // Try to fetch the original file first
-    const response = await fetch(request);
-
-    // If file exists, return it
-    if (response.status !== 404) {
-      return response;
+    try {
+      return await getAssetFromKV(
+        { request, waitUntil: ctx.waitUntil.bind(ctx) },
+        {
+          ASSET_NAMESPACE: env.__STATIC_CONTENT,
+          ASSET_MANIFEST: env.__STATIC_CONTENT_MANIFEST,
+        }
+      );
+    } catch (e) {
+      // Fallback to index.html for SPA routes
+      const url = new URL(request.url);
+      url.pathname = "/index.html";
+      return getAssetFromKV(
+        {
+          request: new Request(url.toString()),
+          waitUntil: ctx.waitUntil.bind(ctx),
+        },
+        {
+          ASSET_NAMESPACE: env.__STATIC_CONTENT,
+          ASSET_MANIFEST: env.__STATIC_CONTENT_MANIFEST,
+        }
+      );
     }
-
-    // Otherwise, return index.html for SPA fallback
-    return fetch(`${url.origin}/index.html`);
   },
 };

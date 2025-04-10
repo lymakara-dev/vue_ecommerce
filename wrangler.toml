@@ -1,13 +1,6 @@
 name = "phoneedge"
-type = "javascript"
+main = "worker.js"   # 👈 This is your custom worker that handles fallback routing
+compatibility_date = "2024-04-10"
 
 [site]
-bucket = "./dist"
-entry-point = "."
-
-[build]
-upload.format = "modules"
-upload.main = "worker.js"
-
-[env.production]
-route = "phoneedge.lymakara07012004.workers.dev/*"
+bucket = "./dist"    # 👈 This is the folder where Vue builds your app
