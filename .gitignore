@@ -14,6 +14,9 @@ dist-ssr
 coverage
 *.local
 
+# Environment variables (see .env.example for required keys)
+.env
+
 /cypress/videos/
 /cypress/screenshots/
 

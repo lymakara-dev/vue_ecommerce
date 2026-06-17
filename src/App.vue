@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
+    <ToastContainer />
   </div>
 </template>
 
@@ -8,7 +9,10 @@
 import { ref, onMounted, provide } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from "./router";
+import ToastContainer from "@/shared/components/ToastContainer.vue";
+import { useToastStore } from "@/shared/store/toast.store";
 
+const toast = useToastStore();
 const auth = getAuth();
 const isLoggedIn = ref(false);
 const isLoading = ref(true);
@@ -30,10 +34,11 @@ const handleSignOut = () => {
     .then(() => {
       isLoggedIn.value = false;
       router.push("/");
+      toast.success("Signed out successfully.");
     })
     .catch((error) => {
       console.error("Error signing out:", error);
-      alert("Failed to sign out. Please try again.");
+      toast.error("Failed to sign out. Please try again.");
     });
 };
 
